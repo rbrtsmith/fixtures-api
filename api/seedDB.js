@@ -1,6 +1,26 @@
 const fetch = require('node-fetch');
 const { parseString } = require('xml2js');
 require('dotenv').config();
+const { idInArr } = require('./utils');
+
+const addArea = (areas, competition) => {
+  if (!idInArr(areas, competition.$.area_id)) {
+    areas.push({
+      id: competition.$.area_id,
+      name: competition.$.area_name
+    });
+  }
+};
+
+const addCompetition = (competitions, competition) => {
+  if (!idInArr(competitions, competition.$.competition_id)) {
+    competitions.push({
+      id: competition.$.competition_id,
+      area_id: competition.$.area_id,
+      name: competition.$.name
+    });
+  }
+};
 
 function transformAndInsertData(err, data) {
   if (err) {
@@ -13,20 +33,9 @@ function transformAndInsertData(err, data) {
   const matches = [];
 
   data.gsmrs.competition.forEach((competition) => {
-    if (!idInArr(areas, competition.$.area_id)) {
-      areas.push({
-        id: competition.$.area_id,
-        name: competition.$.area_name
-      })
-    }
-    if (!idInArr(competitions, competition.$.competition_id)) {
-      competitions.push({
-        id: competition.$.competition_id,
-        area_id: competition.$.area_id,
-        name: competition.$.name
-      })
-    }
-  })
+    addArea(areas, competition);
+    addCompetition(competitions, competition);
+  });
   console.log(competitions)
 }
 
