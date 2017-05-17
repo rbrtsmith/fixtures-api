@@ -19,8 +19,15 @@ function transformAndInsertData(err, data) {
         name: competition.$.area_name
       })
     }
+    if(!areas.find(item => item.id === competition.$.competition_id)) {
+      competitions.push({
+        id: competition.$.competition_id,
+        area_id: competition.$.area_id,
+        name: competition.$.name
+      })
+    }
   })
-  console.log(areas)
+  console.log(competitions)
 }
 
 fetch(process.env.DATA_URL)
