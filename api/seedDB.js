@@ -1,8 +1,12 @@
 const fetch = require('node-fetch');
 const { parseString } = require('xml2js');
 require('dotenv').config();
+const mongoose = require('mongoose');
+const AreaModel = require('./models/area');
 
 const { idInArr, buildUTCTimestamp } = require('./utils');
+
+mongoose.connect(process.env.DB);
 
 const addArea = (areas, competition) => {
   if (!idInArr(areas, competition.$.area_id)) {
@@ -40,7 +44,11 @@ const addMatches = (matches, competition) => {
     });
 };
 
-function transformAndInsertData(err, data) {
+const pushData = (areas) => {
+  AreaModel.insertMany(areas);
+};
+
+const transformAndInsertData = (err, data) => {
   if (err) {
     console.log(`Unable to parse XML: ${process.env.DATA_URL}`);
     process.exit();
@@ -55,7 +63,8 @@ function transformAndInsertData(err, data) {
     addCompetition(competitions, competition);
     addMatches(matches, competition);
   });
-  console.log(matches);
+
+  pushData(areas);
 }
 
 fetch(process.env.DATA_URL)
