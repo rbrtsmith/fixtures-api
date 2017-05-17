@@ -1,7 +1,8 @@
 const express = require('express');
+const { getAllAreas } = require('./controller');
 
 const router = express.Router();
 
-router.get('/', (req, res) => res.send('it works!'));
+router.get('/', getAllAreas);
 
 module.exports = router
