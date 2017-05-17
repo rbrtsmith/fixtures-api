@@ -13,13 +13,13 @@ function transformAndInsertData(err, data) {
   const matches = [];
 
   data.gsmrs.competition.forEach((competition) => {
-    if(!areas.find(item => item.id === competition.$.area_id)) {
+    if (!idInArr(areas, competition.$.area_id)) {
       areas.push({
         id: competition.$.area_id,
         name: competition.$.area_name
       })
     }
-    if(!areas.find(item => item.id === competition.$.competition_id)) {
+    if (!idInArr(competitions, competition.$.competition_id)) {
       competitions.push({
         id: competition.$.competition_id,
         area_id: competition.$.area_id,
