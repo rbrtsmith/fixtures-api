@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import FixturesList from './FixturesList';
 
 class App extends Component {
   state = { areas: [] };
@@ -9,17 +10,9 @@ class App extends Component {
       .then(areas => this.setState({ areas }))
   }
   render() {
-    return (
-      <div>
-        <h1>Fixtures</h1>
-        <ul>
-          {this.state.areas.map(area => (
-            <li key={area.id}>{area.name}</li>
-          ))}
-        </ul>
-      </div>
-    )
+    const { areas } = this.state;
+    return <FixturesList areas={areas} />;
   }
 }
 
-export default App
+export default App;

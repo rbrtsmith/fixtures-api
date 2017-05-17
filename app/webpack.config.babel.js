@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'path'
 
 export default {
   entry: './index.js',
@@ -10,5 +10,8 @@ export default {
     rules: [
       { test: /\.jsx?$/, use: 'babel-loader' }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
-};
+}
