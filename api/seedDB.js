@@ -3,6 +3,8 @@ const { parseString } = require('xml2js');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const AreaModel = require('./models/area');
+const CompetitionModel = require('./models/competition');
+const MatchModel = require('./models/match');
 
 const { idInArr, buildUTCTimestamp } = require('./utils');
 
