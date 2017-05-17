@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-const App = () => <div>It works!</div>
+import App from './App.jsx'
 
 render(<App />, document.querySelector('#app'))
