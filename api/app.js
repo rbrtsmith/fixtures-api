@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 require('./models/area');
+require('./models/competition');
+require('./models/match');
 const routes = require('./routes');
 const { notFound } = require('./handlers');
 
