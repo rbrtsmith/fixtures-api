@@ -6,6 +6,7 @@ const AreaModel = require('./models/area');
 
 const { idInArr, buildUTCTimestamp } = require('./utils');
 
+mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB);
 
 const addArea = (areas, competition) => {
@@ -44,8 +45,15 @@ const addMatches = (matches, competition) => {
     });
 };
 
-const pushData = (areas) => {
-  AreaModel.insertMany(areas);
+const pushData = (areas, competitions, matches) => {
+  Promise.all([
+    AreaModel.insertMany(areas),
+    CompetitionModel.insertMany(competitions),
+    MatchModel.insertMany(matches)
+  ])
+  .then(() => console.log('Successfully seeded the DB'))
+  .catch(err => console.error(err))
+  .then(() => process.exit());
 };
 
 const transformAndInsertData = (err, data) => {
@@ -64,7 +72,7 @@ const transformAndInsertData = (err, data) => {
     addMatches(matches, competition);
   });
 
-  pushData(areas);
+  pushData(areas, competitions, matches);
 }
 
 fetch(process.env.DATA_URL)
