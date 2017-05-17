@@ -1,6 +1,7 @@
 import path from 'path';
 
 export default {
+  context: path.resolve(__dirname, './src'),
   entry: './index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
