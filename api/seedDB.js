@@ -32,8 +32,8 @@ const addCompetition = (competitions, competition) => {
 
 const addMatches = (matches, competition) => {
   competition.season[0].round[0].match &&
-    competition.season[0].round[0].match.forEach(match => {
-      const timestamp = buildUTCTimestamp(match.$.date_utc, match.$.time_utc)
+    competition.season[0].round[0].match.forEach((match) => {
+      const timestamp = buildUTCTimestamp(match.$.date_utc, match.$.time_utc);
       if (!idInArr(matches, match.$.match_id)) {
         matches.push({
           id: match.$.match_id,
@@ -53,13 +53,16 @@ const pushData = (areas, competitions, matches) => {
     CompetitionModel.insertMany(competitions),
     MatchModel.insertMany(matches)
   ])
+  /* eslint-disable no-console  */
   .then(() => console.log('Successfully seeded the DB'))
   .catch(err => console.error(err))
+  /* eslint-enable */
   .then(() => process.exit());
 };
 
 const transformAndInsertData = (err, data) => {
   if (err) {
+    // eslint-disable-next-line no-console
     console.log(`Unable to parse XML: ${process.env.DATA_URL}`);
     process.exit();
   }
@@ -75,7 +78,7 @@ const transformAndInsertData = (err, data) => {
   });
 
   pushData(areas, competitions, matches);
-}
+};
 
 fetch(process.env.DATA_URL)
   .then(res => res.text())

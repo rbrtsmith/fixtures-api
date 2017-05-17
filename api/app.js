@@ -13,8 +13,8 @@ mongoose.connect(process.env.DB);
 mongoose.Promise = global.Promise;
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
@@ -22,4 +22,5 @@ app.use('/', routes);
 app.use(notFound);
 
 const PORT = process.env.PORT || 9999;
+// eslint-disable-next-line no-console
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
