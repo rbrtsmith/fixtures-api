@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
+import T from 'prop-types';
+import { connect } from 'react-redux';
 import AreasList from './AreasList';
+import { fetchAreas } from './store/actions';
 
-class FixtureListContainer extends Component {
+class AreasListContainer extends Component {
   state = { areas: [] };
 
   componentDidMount() {
-    fetch('http://localhost:9000/areas')
-      .then(res => res.json())
-      .then(areas => this.setState({ areas }));
+    this.props.fetchAreas();
   }
   render() {
-    const { areas } = this.state;
-    return <AreasList areas={areas} />;
+    return <AreasList areas={this.props.areas} />;
   }
 }
 
-export default FixtureListContainer;
+AreasListContainer.propTypes = {
+  fetchAreas: T.func.isRequired,
+  areas: T.arrayOf(T.shape({}))
+};
+
+const mapStateToProps = state => ({
+  areas: state.areas[0]
+});
+
+export default connect(mapStateToProps, { fetchAreas })(AreasListContainer);

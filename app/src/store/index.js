@@ -8,8 +8,6 @@ const middleware = compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f,
 );
 
-const initialState = {};
-
-const store = createStore(rootReducer, initialState, middleware);
+const store = createStore(rootReducer, middleware);
 
 export default store;

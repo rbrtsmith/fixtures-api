@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import T from 'prop-types';
 
-const FixturesList = ({ areas = [] }) => (
+const AreasList = ({ areas = [] }) => (
   <div>
     <h1>Fixtures</h1>
     <ul>
@@ -15,8 +15,8 @@ const FixturesList = ({ areas = [] }) => (
   </div>
 );
 
-FixturesList.propTypes = {
+AreasList.propTypes = {
   areas: T.arrayOf(T.shape({}))
 };
 
-export default FixturesList;
+export default AreasList;
