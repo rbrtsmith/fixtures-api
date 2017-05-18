@@ -31,6 +31,7 @@ const addCompetition = (competitions, competition) => {
 };
 
 const addMatches = (matches, competition) => {
+  // eslint-disable-next-line no-unused-expressions
   competition.season[0].round[0].match &&
     competition.season[0].round[0].match.forEach((match) => {
       const timestamp = buildUTCTimestamp(match.$.date_utc, match.$.time_utc);
