@@ -6,6 +6,7 @@
   "extends": "airbnb",
   "rules": {
     "comma-dangle": ["error", "never"],
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "camelcase": "off"
   }
 }

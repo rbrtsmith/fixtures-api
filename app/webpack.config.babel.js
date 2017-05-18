@@ -14,5 +14,8 @@ export default {
   },
   resolve: {
     extensions: ['.js', '.jsx']
+  },
+  devServer: {
+    historyApiFallback: true
   }
 };
