@@ -5,7 +5,7 @@ import AreasListContainer from './AreasListContainer';
 import AreaContainer from './AreaContainer';
 import MatchListContainer from './MatchListContainer';
 
-const App = () => (
+export default () => (
   <Router>
     <div>
       <Route exact path="/" component={AreasListContainer} />
@@ -14,5 +14,3 @@ const App = () => (
     </div>
   </Router>
 );
-
-export default App;

@@ -1,6 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
-import moment from 'moment'
+import moment from 'moment';
 
 const Match = ({ match: { team_a_name, team_b_name, timestamp } }) => (
   <div>

@@ -4,7 +4,6 @@ const Area = mongoose.model('Area');
 const Competition = mongoose.model('Competition');
 const Match = mongoose.model('Match');
 
-
 exports.getAllAreas = async (req, res) => {
   try {
     const areas = await Area.find();
