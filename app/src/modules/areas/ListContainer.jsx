@@ -5,7 +5,7 @@ import List from './List';
 import { fetchAreas } from '../../store/actions/areas';
 import { areasSelector } from '../../store/reducers/areas';
 
-class AreasListContainer extends Component {
+class ListContainer extends Component {
   componentDidMount() {
     this.props.fetchAreas();
   }
@@ -14,11 +14,13 @@ class AreasListContainer extends Component {
   }
 }
 
-AreasListContainer.propTypes = {
+export { ListContainer };
+
+ListContainer.propTypes = {
   fetchAreas: T.func.isRequired,
   areas: T.shape({}).isRequired
 };
 
 const mapStateToProps = state => ({ areas: areasSelector(state) });
 
-export default connect(mapStateToProps, { fetchAreas })(AreasListContainer);
+export default connect(mapStateToProps, { fetchAreas })(ListContainer);

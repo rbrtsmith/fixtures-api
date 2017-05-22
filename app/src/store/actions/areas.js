@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 const FETCH_AREAS_REQUEST = 'FETCH_AREAS_REQUEST';
 const FETCH_AREAS_SUCCESS = 'FETCH_AREAS_SUCCESS';
 const FETCH_AREAS_ERROR = 'FETCH_AREAS_ERROR';
@@ -28,6 +30,7 @@ export {
   FETCH_AREAS_REQUEST,
   FETCH_AREAS_SUCCESS,
   FETCH_AREAS_ERROR,
+  fetchAreasRequest,
   fetchAreasSuccess,
   fetchAreas
 };
