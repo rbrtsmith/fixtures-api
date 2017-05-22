@@ -1,4 +1,6 @@
 api/node_modules
 api/.env
+api/coverage
 
 app/node_modules
+app/coverage
