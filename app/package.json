@@ -10,6 +10,7 @@
     "start": "webpack-dev-server --open",
     "lint": "eslint ./ --ext .js,.jsx",
     "unit": "jest",
+    "unit-watch": "jest --watchAll",
     "test": "yarn lint && yarn unit",
     "coverage": "jest --coverage  --collectCoverageFrom='**/*.{js,jsx}'"
   },
